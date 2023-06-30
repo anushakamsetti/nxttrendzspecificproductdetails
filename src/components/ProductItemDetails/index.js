@@ -77,7 +77,7 @@ class ProductItemDetails extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="product-details-loader-container" data-testid="loader">
+    <div className="products-details-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -90,7 +90,7 @@ class ProductItemDetails extends Component {
         className="failure-view-image"
       />
       <h1 className="product-not-found-heading">Product Not Found</h1>
-      <Link to="/product">
+      <Link to="/products">
         <button type="button" className="button">
           Continue Shopping
         </button>
@@ -129,7 +129,7 @@ class ProductItemDetails extends Component {
           <div className="product">
             <h1 className="product-name">{title}</h1>
             <p className="price-details">Rs {price}/-</p>
-            <div className="rating-and-review-count">
+            <div className="rating-and-reviews-count">
               <div className="rating-container">
                 <p className="rating">{rating}</p>
                 <img
@@ -143,7 +143,7 @@ class ProductItemDetails extends Component {
             <p className="product-description">{description}</p>
             <div className="label-value-container">
               <p className="label">Available:</p>
-              <p className="value">{available}</p>
+              <p className="value">{availability}</p>
             </div>
             <div className="label-value-container">
               <p className="label">Brand:</p>
@@ -177,7 +177,7 @@ class ProductItemDetails extends Component {
         <h1 className="similar-products-heading">Similar Products</h1>
         <ul className="similar-products-list">
           {similarProductsData.map(eachSimilarProduct => (
-            <SimilarProductsItem
+            <SimilarProductItem
               productDetails={eachSimilarProduct}
               key={eachSimilarProduct.id}
             />
@@ -187,7 +187,7 @@ class ProductItemDetails extends Component {
     )
   }
 
-  renderProductsDetails = () => {
+  renderProductDetails = () => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
@@ -207,7 +207,7 @@ class ProductItemDetails extends Component {
       <>
         <Header />
         <div className="product-item-details-container">
-          {this.renderProductsDetails()}
+          {this.renderProductDetails()}
         </div>
       </>
     )
